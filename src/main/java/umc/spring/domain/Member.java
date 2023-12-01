@@ -35,10 +35,10 @@ public class Member extends BaseEntity {
     @Column(nullable = false, length = 50)
     private String address;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = true, length = 50) // nullable 추후 수정
     private String email;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = true, length = 20) // nullable 추후 수정
     private String phoneNumber;
 
     private Integer point;
