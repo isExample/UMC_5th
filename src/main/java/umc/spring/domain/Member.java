@@ -1,5 +1,8 @@
 package umc.spring.domain;
 
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc.spring.domain.common.BaseEntity;
 import lombok.*;
 import umc.spring.domain.enums.Gender;
@@ -14,6 +17,8 @@ import java.util.List;
 
 @Entity
 @Getter
+@DynamicUpdate
+@DynamicInsert
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -41,6 +46,7 @@ public class Member extends BaseEntity {
     @Column(nullable = true, length = 20) // nullable 추후 수정
     private String phoneNumber;
 
+    @ColumnDefault("0")
     private Integer point;
 
     @Enumerated(EnumType.STRING)
