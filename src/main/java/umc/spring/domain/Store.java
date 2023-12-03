@@ -1,6 +1,8 @@
 package umc.spring.domain;
 
 import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc.spring.domain.common.BaseEntity;
 
 import javax.persistence.*;
@@ -40,4 +42,6 @@ public class Store extends BaseEntity {
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
     private List<Mission> missionList = new ArrayList<>();
 
+    public void setStoreCategory(StoreCategory storeCategory){ this.category = storeCategory; }
+    public void setRegion(Region region){ this.region = region; }
 }
