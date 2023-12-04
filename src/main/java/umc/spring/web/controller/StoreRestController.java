@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import umc.spring.apiPayload.ApiResponse;
 import umc.spring.converter.StoreConverter;
+import umc.spring.domain.Mission;
 import umc.spring.domain.Store;
 import umc.spring.service.storeService.StoreCommandService;
 import umc.spring.web.dto.StoreRequestDTO;
@@ -26,4 +27,11 @@ public class StoreRestController {
         Store store = storeCommandService.addStore(request);
         return ApiResponse.onSuccess(StoreConverter.toAddResultDTO(store));
     }
+
+    @PostMapping("/missions/")
+    public ApiResponse<StoreResponseDTO.AddMissionDTO> addMission(@RequestBody @Valid StoreRequestDTO.AddMissionDto request){
+        Mission mission = storeCommandService.addMission(request);
+        return ApiResponse.onSuccess(StoreConverter.toAddMissionDTO(mission));
+    }
+
 }

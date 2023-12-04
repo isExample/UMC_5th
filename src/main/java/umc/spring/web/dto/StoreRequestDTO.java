@@ -11,4 +11,12 @@ public class StoreRequestDTO {
         Long regionId;
         Long storeCategoryId;
     }
+
+    @Getter
+    public static class AddMissionDto{
+        String contents;
+        int reward;
+        String deadline;
+        Long storeId;
+    }
 }
