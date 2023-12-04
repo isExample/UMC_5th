@@ -14,4 +14,10 @@ public class MemberRequestDTO {
         String address;
         List<Long> preferList;
     }
+
+    @Getter
+    public static class ChallengeDto{
+        Long missionId;
+        Long memberId;
+    }
 }

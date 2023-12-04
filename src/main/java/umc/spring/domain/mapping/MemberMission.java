@@ -1,6 +1,9 @@
 package umc.spring.domain.mapping;
 
 import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import umc.spring.domain.FoodCategory;
 import umc.spring.domain.Member;
 import umc.spring.domain.Mission;
 import umc.spring.domain.Store;
@@ -11,6 +14,8 @@ import javax.persistence.*;
 
 @Entity
 @Getter
+@DynamicUpdate
+@DynamicInsert
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -32,4 +37,13 @@ public class MemberMission extends BaseEntity {
     @JoinColumn(name = "member_id")
     private Member member;
 
+    public void setMember(Member member){
+        if(this.member != null)
+            member.getMissionList().remove(this);
+        this.member = member;
+        member.getMissionList().add(this);
+    }
+    public void setMission(Mission mission){
+        this.mission = mission;
+    }
 }
