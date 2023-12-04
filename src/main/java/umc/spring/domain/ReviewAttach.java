@@ -22,4 +22,10 @@ public class ReviewAttach {
     @JoinColumn(name = "review_id")
     private Review review;
 
+    public void setReview(Review review){
+        if(this.review != null)
+            review.getAttachList().remove(this);
+        this.review = review;
+        review.getAttachList().add(this);
+    }
 }
