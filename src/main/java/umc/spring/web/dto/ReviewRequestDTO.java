@@ -8,7 +8,7 @@ public class ReviewRequestDTO {
 
     @Getter
     public static class WriteDto{
-        int score;
+        Float score;
         String contents;
         Long memberId;
         Long storeId;
